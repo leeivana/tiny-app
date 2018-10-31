@@ -3,6 +3,8 @@
 <head>
   <title>Tiny App</title>
   <link href="../css/style.css" rel="stylesheet" type="text/css">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+
 <style type="text/css">
 </style>
 
@@ -15,7 +17,7 @@
       <label for="deleteBtn"></label>
       <button class="main" label="deleteBtn" name="deleteBtn"> Delete! </button>
    </form>
-   <a href="/urls/<%-urlKeys[i] %>"><button class="main">Edit</button></a>
+   <a href="/urls/<%-urlKeys[i] %>"><button>Edit</button></a>
       <li><%= urlKeys[i] %><span> : </span><a href='/urls/<%- urlKeys[i] %>'><%=urlEntries[i]%></li></a>
    <% }; %>
   </ul>

@@ -59,7 +59,7 @@ app.get('/urls/new', (req, res) => {
 app.get('/urls/:id', (req, res) => {
   const templateVars = {
     shortURL: req.params.id,
-    urlDB: urlDatabase,
+    url: urlDatabase,
     username: req.cookies['username'],
   };
   res.render('pages/urls_show', templateVars);
@@ -74,23 +74,24 @@ app.post('/urls/:id', (req, res) => {
 app.post('/urls', (req, res) => {
   const longURL = req.body.longURL;
   const shortURL = generateRandomString(longURL);
-  urlDatabase[shortURL] =[longURL];
-  res.redirect(301, '/urls');
+  urlDatabase[shortURL] = longURL;
+  res.redirect(302, '/urls');
+});
+
+app.get('/u/:shortURL', (req, res) => {
+  let longURL = urlDatabase[req.params.shortURL];
+  if(longURL){
+    res.redirect(302, longURL);
+  }else{
+    res.sendStatus(404);
+  }
 });
 
 app.post('/urls/:id/delete', (req, res) => {
   const id = req.params.id;
   delete urlDatabase[id];
-  res.redirect(301, '/urls');
+  res.redirect(302, '/urls');
 });
-
-// app.get('/u/:shortURL', (req, res) => {
-//   const templateVars = {
-//     username: req.cookies['username'],
-//     longURL: urlDatabase[req.params.shortURL]
-//   }
-//   res.redirect(301, '/');
-// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
