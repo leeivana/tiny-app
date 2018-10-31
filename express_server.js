@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const sha256 = require('js-sha256');
 app.use(express.static('./public' + '/public'));
 app.set('view engine', 'ejs');
+app.use(express.static('views'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 
@@ -50,7 +51,7 @@ app.post('/urls', (req, res) => {
 });
 
 app.post('/urls/:id/delete', (req, res) => {
-  let id = req.params.id;
+  const id = req.params.id;
   console.log(id);
   delete urlDatabase[id];
   // console.log('redirect');

@@ -1,7 +1,7 @@
 {
   "name": "tiny-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "URL Shortening Application created using express as the framework and EJS as the templating language",
   "main": "express_server.js",
   "scripts": {
     "start": "./node_modules/.bin/nodemon -L express_server.js",
