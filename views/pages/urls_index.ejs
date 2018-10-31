@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tiny App</title>
+  <link href="../css/style.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  button.delete{
+    float:right;
+  }
+  form, li{
+    width: 60%;
+    margin: 0;
+  }
+</style>
+
+</head>
+<body>
+  <% include ../partials/header %>
+  <ul>
+   <% for(let i = 0; i < urlKeys.length; i++){ %>
+   <form method='POST' action='/urls/b2xVn2/delete'>
+      <label for="deleteBtn"></label>
+      <button class='delete' id='deleteBtn' label='deleteBtn' name="deleteBtn"> Delete! </button>
+   </form>
+      <li><%= urlKeys[i] %><span> : </span><%=urlEntries[i]%></li>
+   <% }; %>
+  </ul>
+
+</body>
+</html>
+
