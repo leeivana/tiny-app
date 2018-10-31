@@ -3,10 +3,13 @@ body {
   padding: 50px;
   background-color: #f7f8f9;
 }
-button.delete {
+button.main{
   float: right;
 }
 form, li {
   width: 60%;
   margin: 0;
+}
+input{
+  width: 10rem;
 }

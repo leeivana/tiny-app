@@ -13,9 +13,10 @@
    <% for(let i = 0; i < urlKeys.length; i++){ %>
    <form method='POST' action='/urls/<%- urlKeys[i]%>/delete'>
       <label for="deleteBtn"></label>
-      <button class='delete' id='deleteBtn' label='deleteBtn' name="deleteBtn"> Delete! </button>
+      <button class="main" label="deleteBtn" name="deleteBtn"> Delete! </button>
    </form>
-      <li><%= urlKeys[i] %><span> : </span><%=urlEntries[i]%></li>
+   <a href="/urls/<%-urlKeys[i] %>"><button class="main">Edit</button></a>
+      <li><%= urlKeys[i] %><span> : </span><a href='/urls/<%- urlKeys[i] %>'><%=urlEntries[i]%></li></a>
    <% }; %>
   </ul>
 

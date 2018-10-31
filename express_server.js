@@ -3,13 +3,12 @@ const app = express();
 const PORT = 8080;
 const bodyParser = require('body-parser');
 const sha256 = require('js-sha256');
-app.use(express.static('./public' + '/public'));
+
 app.set('view engine', 'ejs');
+app.use(express.static('./public' + '/public'));
 app.use(express.static('views'));
 app.use(bodyParser.urlencoded({extended: true}));
 
-
-//generate random string of 6 characters
 const generateRandomString = (string) => {
   return sha256(string).slice(0,6);
 };
@@ -37,14 +36,19 @@ app.get('/urls/new', (req, res) => {
 });
 
 app.get('/urls/:id', (req, res) => {
-  const templateVars = {shortURL: req.params.id, url: urlDatabase};
+  const templateVars = {shortURL: req.params.id, urlDB: urlDatabase};
   res.render('pages/urls_show', templateVars);
+});
+
+app.post('/urls/:id', (req, res) => {
+  const id = req.params.id;
+  urlDatabase[id] = req.body.update;
+  res.redirect('/');
 });
 
 app.post('/urls', (req, res) => {
   let longURL = req.body.longURL;
-  longURL = longURL.includes('http://') ? longURL += '' : 'http://' + longURL;
-  longURL = longURL.includes('.com') ? longURL += '' : longURL + '.com';
+  longURL = longURL.includes('http://www.') ? longURL += '' : 'http://www.' + longURL;
   const shortURL = generateRandomString(longURL);
   urlDatabase[shortURL] =[longURL];
   res.redirect(301, '/urls/'+shortURL);
@@ -52,11 +56,10 @@ app.post('/urls', (req, res) => {
 
 app.post('/urls/:id/delete', (req, res) => {
   const id = req.params.id;
-  console.log(id);
   delete urlDatabase[id];
-  // console.log('redirect');
   res.redirect(301, '/urls');
 });
+
 
 app.get('/u/:shortURL', (req, res) => {
   let longURL = urlDatabase[req.params.shortURL];
