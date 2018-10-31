@@ -8,7 +8,20 @@
 <body>
   <h1>TinyApp</h1>
   <h2>Shortened URLs: </h2>
-  <a href='/urls/new'><button>Shorten Urls</button></a>
+  <% if(username){ %>
+    <h2 id="username">Signed in as: <%= username %> </h2>
+  <% } %>
+
+  <% if(username){ %>
+    <form method="POST" action="/urls/logout">
+      <button type="submit">Logout</button>
+    </form>
+  <% }else{ %>
+      <a href="/urls/login"><button>Login</button></a>
+  <% } %>
+
   <a href='/urls'><button>Main Page</button></a>
+  <a href='/urls/new'><button>Shorten Urls</button></a>
+
 </body>
 </html>
