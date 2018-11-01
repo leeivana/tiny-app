@@ -3,17 +3,23 @@
 <head>
   <title></title>
   <link href="../css/style.css" rel="stylesheet" type="text/css">
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <header>
   <% include ../partials/header %>
 </header>
 <body>
-  <form method="POST" action="/urls/<%= shortURL%>">
-      <%= shortURL %> : <input type="text" name="update" value="<%= url[shortURL] %>"</input>
+  <div class="container-fluid">
+    <form method="POST" action="/urls/<%= shortURL%>">
+    <div class="form-group">
+      <h2><%= shortURL %></h2><input class="form-control" type="text" name="update" value="<%= url[shortURL] %>"</input>
       <label for="updateBtn"></label>
-      <button id"updateBtn" name="updateBtn" >Update!</button>
+    </div>
+      <button class="btn btn-success" name="updateBtn" >Update!</button>
   </form>
+
+  </div>
+
 </body>
 </html>

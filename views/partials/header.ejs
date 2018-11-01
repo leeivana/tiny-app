@@ -3,26 +3,44 @@
 <head>
   <title>TinyApp</title>
     <link href="../css/style.css" rel="stylesheet" type="text/css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 
 </head>
 <body>
-  <h1>TinyApp</h1>
-  <h2>Shortened URLs: </h2>
-  <% if(username){ %>
-    <h2 id="username">Signed in as: <%= username %> </h2>
-  <% } %>
+<nav class="navbar navbar-default fixed-top">
+    <div class="container">
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-items" aria-exanded="false" aria-controls="navbar" onclick="buttonFunction()">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
 
-  <% if(username){ %>
-    <form method="POST" action="/urls/logout">
-      <button type="submit">Logout</button>
-    </form>
-  <% }else{ %>
-      <a href="/urls/login"><button>Login</button></a>
-  <% } %>
+      <div class="navbar-header">
+        <a href="/urls" class="navbar-brand">TinyApp<small>URL Shortener</small></a>
+      </div>
 
-  <a href='/urls'><button>Main Page</button></a>
-  <a href='/urls/new'><button>Shorten Urls</button></a>
-
+      <div class="collapse navbar-collapse" id="menu-items">
+        <ul class="nav navbar-nav navbar-right" >
+          <% if(username){ %>
+            <li class="active"><a href="#">Logged in as: <%= username %></a></li>
+          <% }else{ %>
+              <li class="active"><a href="/urls/login">Login</a></li>
+          <%  } %>
+           <% if(username){ %>
+            <li>
+              <span id="logoutBTN">
+              <form method="POST" action="/urls/logout">
+                 <input id="logoutBTN" type="submit" value="Logout"/>
+              </form>
+              </span>
+            </li>
+          <% } %>
+          <li><a href="/urls/new">Shorten URLs</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </body>
 </html>

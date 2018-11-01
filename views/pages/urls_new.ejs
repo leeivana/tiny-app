@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
   <link href="../css/style.css" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 
   <title>TinyApp</title>
 </head>
   <body>
-    <% include ../partials/header %>
+  <% include ../partials/header %>
+    <div id='new'>
     <form action="/urls" method="POST" style="margin:150px;">
-      <label for="longURL">Enter a URL:</label>
-        <input id="longURL" type="text" name="longURL" placeholder="http://">
-      <input type="submit" value="Submit">
+      <div class="form-group">
+      <label for="longURL" id="enterNEW"><h1>Enter a URL</h1></label>
+        <input class="form-control" id="longURL" type="text" name="longURL" placeholder="http://">
+      </div>
+        <input class="btn btn-success" type="submit" value="Submit">
     </form>
+    </div>
   </body>
 </html>
