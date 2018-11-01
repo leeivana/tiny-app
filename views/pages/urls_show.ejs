@@ -3,7 +3,8 @@
 <head>
   <title></title>
   <link href="../css/style.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <header>
@@ -13,10 +14,10 @@
   <div class="container-fluid">
     <form method="POST" action="/urls/<%= shortURL%>">
     <div class="form-group">
-      <h2><%= shortURL %></h2><input class="form-control" type="text" name="update" value="<%= url[shortURL] %>"</input>
+      <h2><%= shortURL %></h2><input class="form-control" type="text" name="update" value="<%= url[shortURL].url %>"</input>
       <label for="updateBtn"></label>
     </div>
-      <button class="btn btn-success" name="updateBtn" >Update!</button>
+      <button class="btn btn-info" name="updateBtn" >Update!</button>
   </form>
 
   </div>

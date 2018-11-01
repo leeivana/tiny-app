@@ -4,6 +4,7 @@
   <title>TinyApp</title>
     <link href="../css/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
 
 </head>
@@ -28,6 +29,7 @@
           <% }else{ %>
               <li class="active"><a href="/urls/login">Login</a></li>
           <%  } %>
+          <li><a href="/urls/new">Shorten a new URL</a></li>
            <% if(user_id){ %>
             <li>
               <span id="logoutBTN">
@@ -37,7 +39,6 @@
               </span>
             </li>
           <% } %>
-          <li><a href="/urls/new">Shorten a new URL</a></li>
         </ul>
       </div>
     </div>

@@ -3,10 +3,16 @@ body {
 }
 .jumbotron{
   text-align: center;
+  font-family: 'Montserrat';
   text-transform: uppercase;
   background-color: #f7f8f9 !important;
   padding-bottom: 10px !important;
   padding-top: 10px !important;
+  font-weight: 800 !important;
+}
+
+p, h1, input {
+  font-family: 'Montserrat' !important;
 }
 li {
   display: inline;

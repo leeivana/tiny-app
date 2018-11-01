@@ -4,7 +4,7 @@
   <title>Tiny App</title>
   <link href="../css/style.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
 <style type="text/css">
 </style>
@@ -12,19 +12,22 @@
 </head>
 <body>
   <% include ../partials/header %>
+     <div class="jumbotron">
+     <h1>My URLs</h1>
+   </div>
   <ul>
-   <% for(let i = 0; i < urlKeys.length; i++){ %>
+   <% for(let i = 0; i < urlEntries.length; i++){ %>
 
    <div class="centerDiv row">
     <div class="col-lg-6 col-md-7 allignURL">
       <li id="showURL"><%= urlKeys[i] %><span> : </span><a href='/urls/<%- urlKeys[i] %>'><%=urlEntries[i]%></li></a>
     </div>
     <div class="col-lg-6 col-md-7 allignBTN">
-      <a class="btn btn-success editBTN" href="/urls/<%-urlKeys[i] %>">Edit</a>
+      <a class="btn btn-info editBTN" href="/urls/<%-urlKeys[i] %>">Edit</a>
 
     <form method='POST' action='/urls/<%- urlKeys[i]%>/delete'>
       <label for="deleteBtn" id="deleteBTN"></label>
-      <button class="btn btn-success editBTN" label="deleteBtn" name="deleteBtn"> Delete! </button>
+      <button class="btn btn-info editBTN" label="deleteBtn" name="deleteBtn"> Delete! </button>
    </form>
    </div>
    <% }; %>
