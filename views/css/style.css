@@ -1,7 +1,13 @@
 body {
   background-color: #f7f8f9 !important;
 }
-
+.jumbotron{
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #f7f8f9 !important;
+  padding-bottom: 10px !important;
+  padding-top: 10px !important;
+}
 li {
   display: inline;
 }
@@ -94,5 +100,13 @@ input {
   text-align: center;
 }
 li#showURL{
-  font-size: 30px;
+  font-size: 20px;
+}
+.allignURL{
+  padding-top: 12px;
+  text-align: right;
+
+}
+.allignBTN{
+  text-align: left;
 }

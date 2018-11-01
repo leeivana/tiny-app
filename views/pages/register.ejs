@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login</title>
+  <title>Register</title>
     <link href="../css/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -9,19 +9,18 @@
 <body>
     <% include ../partials/header %>
     <div class="jumbotron">
-        <h1>Login</h1>
+        <h1>Register</h1>
     </div>
     <div class="container-fluid">
-    <form action="/urls/login" method="POST">
+    <form action="/urls/register" method="POST">
         <div class="form-group">
-        <label for="email">Email</label>
+        <label for="username">Email</label>
         <input type="email" name="email" placeholder="example@example.com" class="form-control">
         <div></div>
         <label for="password">Password</label>
         <input type="password" name="password" class="form-control" required>
-        <button class="btn btn-success" id="">Login</button>
+        <button class="btn btn-success" id="">Register!</button>
         </div>
-        <p>Don't have an account? Sign up <a href="/urls/register"> here!</a></p>
     </form>
     </div>
       <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>

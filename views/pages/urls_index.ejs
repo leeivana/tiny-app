@@ -15,18 +15,22 @@
   <ul>
    <% for(let i = 0; i < urlKeys.length; i++){ %>
 
-   <div class="centerDiv">
+   <div class="centerDiv row">
+    <div class="col-lg-6 col-md-7 allignURL">
       <li id="showURL"><%= urlKeys[i] %><span> : </span><a href='/urls/<%- urlKeys[i] %>'><%=urlEntries[i]%></li></a>
+    </div>
+    <div class="col-lg-6 col-md-7 allignBTN">
       <a class="btn btn-success editBTN" href="/urls/<%-urlKeys[i] %>">Edit</a>
 
     <form method='POST' action='/urls/<%- urlKeys[i]%>/delete'>
       <label for="deleteBtn" id="deleteBTN"></label>
       <button class="btn btn-success editBTN" label="deleteBtn" name="deleteBtn"> Delete! </button>
    </form>
+   </div>
    <% }; %>
    </div>
   </ul>
-
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 </body>
 </html>
 

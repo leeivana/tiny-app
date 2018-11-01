@@ -23,12 +23,12 @@
 
       <div class="collapse navbar-collapse" id="menu-items">
         <ul class="nav navbar-nav navbar-right" >
-          <% if(username){ %>
-            <li class="active"><a href="#">Logged in as: <%= username %></a></li>
+          <% if(user_id){ %>
+            <li class="active"><a href="#">Logged in as: <%= userDB[user_id].email %></a></li>
           <% }else{ %>
               <li class="active"><a href="/urls/login">Login</a></li>
           <%  } %>
-           <% if(username){ %>
+           <% if(user_id){ %>
             <li>
               <span id="logoutBTN">
               <form method="POST" action="/urls/logout">
@@ -37,10 +37,11 @@
               </span>
             </li>
           <% } %>
-          <li><a href="/urls/new">Shorten URLs</a></li>
+          <li><a href="/urls/new">Shorten a new URL</a></li>
         </ul>
       </div>
     </div>
   </nav>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 </body>
 </html>
