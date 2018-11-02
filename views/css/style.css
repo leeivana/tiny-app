@@ -10,16 +10,97 @@ body {
   padding-top: 10px !important;
   font-weight: 800 !important;
 }
+#message{
+  text-align: center;
+  font-size: 2rem;
+  padding: 11%;
+}
 
-p, h1, input {
+div.centerDiv.main{
+  align-items: center;
+  justify-content: center;
+}
+ul.container{
+   text-align: center;
+}
+.btn-info{
+  margin-top: 10px;
+}
+.signup{
+  margin-top: 10px;
+}
+
+@media (min-width: 300px) {
+  .header {
+    background-size: 55%;
+    height: 15em;
+  }
+  #logoutBTN {
+      padding-left: 8px !important;
+/*      padding-top: 6px ;
+      padding-bottom: 2px;*/
+  }
+  li#showURL{
+      font-size: 12px !important;
+
+  }
+  a.editBTN, button.editBTN{
+    font-size: 11px;
+  }
+  ul.container{
+  }
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .header {
+        background-size: 40%;
+    }
+    li#showURL{
+      font-size: 13px !important;
+    }
+    ul.container{
+    }
+
+
+}
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .header {
+        background-size: 30%;
+    }
+        #logoutBTN {
+      padding-top: 14px;
+    }
+    li#showURL{
+      font-size: 18px !important;
+    }
+    ul.container{
+    }
+/*     a.editBTN, button.editBTN{
+      font-size: 16px;
+    }*/
+
+}
+
+input.btn{
+  margin-top: 10px;
+}
+
+p, h1, input, div {
   font-family: 'Montserrat' !important;
+}
+h1{
+  text-transform: uppercase;
 }
 li {
   display: inline;
 }
+ul.container{
+    justify-content: center;
+}
 div.centerDiv{
-  text-align: center;
-  width: 80%;
+  display: inline-flex;
+  flex-direction: column;
   margin: 0 auto;
 }
 form{
@@ -34,7 +115,7 @@ label#enterNEW, div#new{
 }
 div#new{
   text-align: center;
-  height: 30%
+  padding: 14% !important;
 }
 input#longURL{
   text-align: center;
@@ -49,9 +130,9 @@ input.form-control{
   text-align: center;
 }
 
-.btn {
+/*.btn {
   margin: 10px;
-}
+}*/
 #logoutBTN{
   -webkit-appearance: none;
   border: 0;
@@ -86,8 +167,7 @@ a.navbar-brand{
 }
 
 button{
-/*  float:right;
-*/  text-align: center;
+  text-align: center;
 }
 .editBTN{
   margin-bottom: 30px !important;
@@ -108,11 +188,4 @@ input {
 li#showURL{
   font-size: 20px;
 }
-.allignURL{
-  padding-top: 12px;
-  text-align: right;
 
-}
-.allignBTN{
-  text-align: left;
-}
