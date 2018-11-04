@@ -13,6 +13,7 @@ app.use(cookieSession({
   name: 'session',
   secret: 'keypass'
 }));
+app.use(methodOverride('_method'));
 app.use(express.static('views'));
 
 //Databases for URLs and also Users
@@ -83,7 +84,7 @@ app.get('/urls/login', (req, res) => {
   const templateVars = {user_id: req.session.user_id, userDB: users}
   res.render('pages/login', templateVars);
 });
-//creating cookie to remember login user_id
+//setting user_id cookie to the id of the user that is logged in
 app.post('/urls/login', (req, res) => {
   const validUser = Object.values(users).find(user => user.email === req.body.email);
   const id = validUser.id;
@@ -91,6 +92,7 @@ app.post('/urls/login', (req, res) => {
     req.session.user_id = id
     res.redirect('/');
   }else{
+    // popups.alert()
     res.sendStatus(403);
   };
 });
@@ -172,8 +174,8 @@ app.get('/unauthorized', (req, res) => {
   res.render('pages/unauthorized', templateVars);
 });
 
-//editing individual url
-app.post('/urls/:id', (req, res) => {
+//editing individual url -- need to fix this too
+app.put('/urls/:id', (req, res) => {
   const id = req.params.id;
   urlDatabase[id].url = req.body.update;
   res.redirect('/');
@@ -194,14 +196,13 @@ app.get('/u/:shortURL', (req, res) => {
     res.sendStatus(404);
   }
 });
-//deleting urls
-app.post('/urls/:id/delete', (req, res) => {
-  const id = req.params.id;
-  delete urlDatabase[id];
+//deleting urls --> need to fix.
+app.delete('/urls/:id/', (req, res) => {
+  delete urlDatabase[req.params.id];
   res.redirect(302, '/urls');
 });
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+  console.log(`TinyApp listening on port ${PORT}`);
 })
 

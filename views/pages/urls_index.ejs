@@ -26,9 +26,9 @@
       <li id="showURL"><%= urlKeys[i] %><span> : </span><a href='/urls/<%- urlKeys[i] %>'><%=urlEntries[i]%></li></a>
     </div>
     <div>
-      <a class="btn btn-info editBTN" href="/urls/<%-urlKeys[i] %>">Edit</a>
+      <a class="btn btn-info editBTN" href="/urls/<%-urlKeys[i]%>">Edit</a>
 
-    <form method='POST' action='/urls/<%- urlKeys[i]%>/delete'>
+    <form method='POST' action='/urls/<%- urlKeys[i]%>?_method=DELETE'>
       <label for="deleteBtn" id="deleteBTN"></label>
       <button class="btn btn-info editBTN" label="deleteBtn" name="deleteBtn"> Delete! </button>
    </form>
