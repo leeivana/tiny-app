@@ -87,7 +87,6 @@ app.post('/urls/login', (req, res) => {
   const validUser = Object.values(users).find(user => user.email === req.body.email);
   const id = validUser.id;
   if(validUser && bcrypt.compareSync(req.body.password, validUser.password)){
-    // res.cookie('user_id', id);
     req.session.user_id = id
     res.redirect('/');
   }else{
@@ -121,7 +120,6 @@ app.post('/urls/register', (req, res) => {
     email : req.body.email,
     password: bcrypt.hashSync(req.body.password, 15),
   };
-  // res.cookie('user_id', id);
   req.session.user_id = id;
   console.log(users);
   res.redirect('/');
@@ -131,8 +129,7 @@ app.post('/urls/register', (req, res) => {
   redirect('/urls/register');
 
 });
-//deleting cookies
-//logout
+//deleting cookies for logout
 app.post('/urls/logout', (req, res) => {
   req.session = null;
   res.redirect('/');
