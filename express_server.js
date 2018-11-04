@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const sha256 = require('js-sha256');
 const cookieSession = require('cookie-session');
 const bcrypt = require('bcrypt');
+const methodOverride = require('method-override');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
@@ -14,10 +15,7 @@ app.use(cookieSession({
 }));
 app.use(express.static('views'));
 
-const generateRandomString = (string) => {
-  return sha256(string).slice(0,6);
-};
-
+//Databases for URLs and also Users
 const urlDatabase = {
   'b2xVn2': {url:'http://www.lighthouselabs.ca', userID: 'user3RandomID'},
   'fjslrl': {url:'http://www.facebook.com', userID: 'user1RandomID'},
@@ -44,7 +42,7 @@ const users = {
   }
 };
 
-
+//helper functions
 const checkURL = (id) => {
   const object = {};
   const entries = Object.entries(urlDatabase);
@@ -56,6 +54,9 @@ const checkURL = (id) => {
   return object;
 }
 
+const generateRandomString = (string) => {
+  return sha256(string).slice(0,6);
+};
 
 app.get('/urls.json', (req, res) => {
   res.json(urlDatabase);
