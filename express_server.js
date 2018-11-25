@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieSession({
   name: 'session',
-  secret: 'keypass'
+  secret: 'keypass',
 }));
 app.use(methodOverride('_method'));
 app.use(express.static('views'));
@@ -24,6 +24,7 @@ const urlDatabase = {
   '4js94k': {url:'http://www.instagram.com', userID: 'user2RandomID'},
   'jtl2hr': {url:'http://www.youtube.com', userID: 'user1RandomID'},
 };
+
 
 const users = {
   "user1RandomID": {
@@ -92,7 +93,6 @@ app.post('/urls/login', (req, res) => {
     req.session.user_id = id
     res.redirect('/');
   }else{
-    // popups.alert()
     res.sendStatus(403);
   };
 });
@@ -160,7 +160,9 @@ app.get('/urls/:id', (req, res) => {
     url: urlDatabase,
     user_id: req.session.user_id,
     userDB: users,
+    timesVisited: req.session[req.params.id],
   };
+  console.log(req.session[req.params.id]);
   res.render('pages/urls_show', templateVars);
 });
 
@@ -174,7 +176,7 @@ app.get('/unauthorized', (req, res) => {
   res.render('pages/unauthorized', templateVars);
 });
 
-//editing individual url -- need to fix this too
+//editing individual url
 app.put('/urls/:id', (req, res) => {
   const id = req.params.id;
   urlDatabase[id].url = req.body.update;
@@ -190,13 +192,26 @@ app.post('/urls', (req, res) => {
 //redirecting to longURL
 app.get('/u/:shortURL', (req, res) => {
   let longURL = urlDatabase[req.params.shortURL].url;
+  let date = new Date();
+  req.session[req.params.shortURL] = (req.session[req.params.shortURL] || 0) + 1;
+
+// date: {userID: [dateAccessed]}
+
+  if(!urlDatabase[req.params.shortURL].date){
+    urlDatabase[req.params.shortURL].date = {};
+  }
+  if(!urlDatabase[req.params.shortURL].date[req.session.user_id]){
+    urlDatabase[req.params.shortURL].date[req.session.user_id] = [];
+  }
+  urlDatabase[req.params.shortURL].date[req.session.user_id].push(date);
+
   if(longURL){
     res.redirect(longURL);
   }else{
     res.sendStatus(404);
   }
 });
-//deleting urls --> need to fix.
+//deleting urls
 app.delete('/urls/:id/', (req, res) => {
   delete urlDatabase[req.params.id];
   res.redirect(302, '/urls');
